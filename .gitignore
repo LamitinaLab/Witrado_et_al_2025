@@ -2,3 +2,11 @@
 __pycache__/
 .ipynb_checkpoints/
 .DS_Store
+
+# Old notebooks
+Combining_ROI_data_into_1_file.ipynb
+Comparing_deltaF_F0_data_between_groups_single_stim.ipynb
+Single_stim_pipeline.ipynb
+
+# Data files and folders
+data/
