@@ -1,0 +1,47 @@
+# Analysis configuration for Witrado et al. 2025 (ASH calcium)
+# Update values here to keep notebooks in sync.
+
+project:
+  name: "Witrado_et_al_2025"
+  created: "260123"
+  gcamp_transgene: "etYIs1"
+  description: "GCaMP6s in the ASH neuron only"
+
+paths:
+  raw_dir: "data/raw/260123"
+  processed_dir: "data/processed/260123"
+  combined_data_dir: "data/processed/260123/combined-data"
+  figures_dir: "data/processed/260123/figures"
+  figure_data_dir: "data/processed/260123/figure_data"
+  figure_statistics_dir: "data/processed/260123/figure_statistics"
+  archive_dir: "data/archive"
+
+wrangling:
+  columns_to_extract: [2, 7]  # Mean1 and Mean2
+  index_col_name: "Index"
+  output_filename: "combined_output.csv"
+
+stimulus:
+  type: "NaCl"
+  concentration: "2M"
+  buffer: "S-basal"
+
+analysis:
+  genotypes: ["wt", "dr206", "dr206 dr180"]  # genotypes included in this experiment
+  time_col: "Time (s) Adjusted"
+  frame_rate_hz: 10  # frames per second
+  stim_window_s: [20, 40]
+  # stim_windows_s: FOR MULTIPLE STIMULUS INTERVALS ADD THEM HERE
+  #  - [30, 40]
+  #  - [60, 70]
+  #  - [90, 100]
+  group_name_overrides: {}  # e.g., {"WT": "wt"}
+  palette:
+    wt: "black" # MAKE SURE TO CHANGE THESE FOR THE CURRENT GENOTYPES!!!!!
+    dr206: "red"
+    "dr206 dr180": "blue"
+  outputs:
+    mean_trace_plot: "mean_deltaF_F0_over_time.png"
+    peak_bar_plot: "peak_deltaF_F0_bar.png"
+    peak_values_csv: "peak_deltaF_F0_values.csv"
+    mean_sem_csv_template: "{group}_mean_sem.csv"

@@ -1,4 +1,12 @@
-Project code for of analysis of ASH GCamP6s data in Witrado et al, 2025. 
-The 'combining ROI data' pulls the FIJI quantified ROI data from multiple files into a single csv file neuron and background ROIs are paired in adjacent columns. First column is the frame #
-The 'single stim pipeline' performs all background subtraction, photobleach correction, and conversion to %deltaF/F0 data for each neuron, which is output as a csv file for comparative analysis. Heat map plots for every neuron are generated.
-The 'comparing deltaF/F0 data between groups' performs comparative plotting and statistics for two or more groups. Also calculates peak %deltaF/F0 values during the stimulation period. Input is the time-corrected %deltaF/F0 data for each neuron csv file, one file per group.
+Project code for analysis of ASH GCaMP6s data in Witrado et al, 2025.
+
+## Workflow (local VS Code)
+- Place raw CSVs in `data/raw`.
+- Update settings in `config.yaml` (paths, columns, frame rate, stimulus windows, and plot outputs).
+- Run `01_data_wrangling.ipynb` to combine ROI CSVs into a single processed file (defaults to columns 3 and 7) saved in `data/processed/combined_output.csv`.
+- Run `02_data_analysis.ipynb` to plot % dF/F0 traces, compute stimulus-window peaks, and export plots/tables to `data/processed`.
+
+Notes:
+- Use the `Python (ash-calcium)` kernel for the notebooks.
+- All notebook settings are read from `config.yaml`.
+- Use `analysis.stim_windows_s` for multiple stimulus periods; the first window is used for peak extraction.
